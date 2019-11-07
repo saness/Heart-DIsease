@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="jumbotron text-center">
+        <h1>Dashboard </h1>
+        <h1><small>Welcome {{current_user.username}}</small></h1>
+    </div>
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">About Application</h4>
+            </div>
+            <div class="card-body">
+              <p>
+                  Learn more about the application by clicking below. The page
+                  consists of information about the application for the user.
+                  Disclaimer for using the application is also stated in the Pagedirected below.
+              </p>
+              <a href="/about" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Click To Learn About App</a>
+            </div>
+          </div>
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+              <h4 class="my-0 font-weight-normal">Prediction</h4>
+            </div>
+            <div class="card-body">
+              
+              <p>
+                  Predict the probability of Heart Disease. Enter the valid 
+                  values in each fields and let the machine learning algorithm do the rest.
+                  For this feature four machine learning algorithms have been used.
+              </p>
+              <a href="/predict" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Click To Access Predict Page</a>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}

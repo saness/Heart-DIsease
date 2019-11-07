@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="jumbotron text-center">
+    <h1>About Application </h1>
+    <p>This application predicts the presence or absence of heart disease in a person. 
+        The user should enter correct inputs in the predict form.
+         Then machine learning algorithms will predict the outcome.
+         The application uses four machine learning algorithms namely, Logistic Regression, Decision Tree,
+         Naive Bayes and Neural Network. Among them highest accuracy has been given by Naive Bayes algorithm 
+         and should be used for reference in confusing cases.
+    </p>
+    <br />
+    <br />
+    <br />
+</div>
+<div class="jumbotron text-center">
+    <h3>Disclaimer</h3>
+    <p>The prediction done by the application depends upon the data used for training the models and is not 100% accurate.
+        Hence the user should not completely rely on the application and should consult professionals before making any decision.
+    </p>
+</div>
+{% endblock %}

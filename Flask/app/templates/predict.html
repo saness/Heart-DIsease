@@ -1,0 +1,293 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1>Predict Heart Disease</h1>
+    <div class="content-section">
+    
+    <form method="POST" action="http://localhost:5000/result">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="form-group">
+                {{ form.age.label(class="form-control-label") }}
+
+                {% if form.age.errors %}
+                    {{ form.age(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.age.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.age(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.sex.label(class="form-control-label") }}
+                {% if form.sex.errors %}
+                    {{ form.sex(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.sex.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.sex(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.cp.label(class="form-control-label") }}
+                {% if form.cp.errors %}
+                    {{ form.cp(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.cp.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.cp(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.resting_bp.label(class="form-control-label") }}
+                {% if form.resting_bp.errors %}
+                    {{ form.resting_bp(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.resting_bp.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.resting_bp(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.serum_cholestrol.label(class="form-control-label") }}
+                {% if form.serum_cholestrol.errors %}
+                    {{ form.serum_cholestrol(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.serum_cholestrol.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.serum_cholestrol(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.fasting_blood_sugar.label(class="form-control-label") }}
+                {% if form.fasting_blood_sugar.errors %}
+                    {{ form.fasting_blood_sugar(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.fasting_blood_sugar.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.fasting_blood_sugar(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.resting_ecg.label(class="form-control-label") }}
+                {% if form.resting_ecg.errors %}
+                    {{ form.resting_ecg(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.resting_ecg.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.resting_ecg(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.max_heart_rate.label(class="form-control-label") }}
+                {% if form.max_heart_rate.errors %}
+                    {{ form.max_heart_rate(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.max_heart_rate.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.max_heart_rate(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.exercise_induced_angina.label(class="form-control-label") }}
+                {% if form.exercise_induced_angina.errors %}
+                    {{ form.exercise_induced_angina(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.exercise_induced_angina.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.exercise_induced_angina(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.st_depression.label(class="form-control-label") }}
+                {% if form.st_depression.errors %}
+                    {{ form.st_depression(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.st_depression.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.st_depression(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.st_slope.label(class="form-control-label") }}
+                {% if form.st_slope.errors %}
+                    {{ form.st_slope(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.st_slope.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.st_slope(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.number_of_vessels.label(class="form-control-label") }}
+                {% if form.number_of_vessels.errors %}
+                    {{ form.number_of_vessels(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.number_of_vessels.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.number_of_vessels(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.thallium_scan_results.label(class="form-control-label") }}
+                {% if form.thallium_scan_results.errors %}
+                    {{ form.thallium_scan_results(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.thallium_scan_results.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.thallium_scan_results(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+        
+    </form>
+    </div>
+
+    {% endblock %}
+
+    <!-- {% from "includes/_formhelpers.html" import render_field %}
+    <form method="POST" action="http://localhost:5000/result">
+        <div class="form-group">
+            <strong>{{render_field(form.age, class_="form-control")}}</strong>
+    </div>
+
+    <div class="form-group">
+        <label><strong>Sex</strong></label>
+        <select name="sex" class="form-control">
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label><strong>Chest Pain Type</strong></label>
+        <select name="cp" class="form-control">
+            <option value="1">Typical Angina</option>
+            <option value="2">Atypical Angina</option>
+            <option value="3">Non-Angina</option>
+            <option value="4">Asymptomatic</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <strong>{{render_field(form.resting_bp, class_="form-control")}}</strong>
+    </div>
+
+    <div class="form-group">
+        <strong>{{render_field(form.serum_cholestrol, class_="form-control")}}</strong>
+    </div>
+
+
+    <div class="form-group">
+        <label><strong>Fasting Blood Sugar > 120 mg/dl</strong></label>
+        <select name="fasting_blood_sugar" class="form-control">
+            <option value="1">True</option>
+            <option value="0">False</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label><strong>Resting ECG</strong></label>
+        <select name="resting_ecg" class="form-control">
+            <option value="0">Normal</option>
+            <option value="1">Abnormality</option>
+            <option value="2">Hypertrophy</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <strong>{{render_field(form.max_heart_rate, class_="form-control")}}</strong>
+
+    </div>
+
+    <div class="form-group">
+        <label><strong>Exercise Induced Angina</strong></label>
+        <select name="exercise_induced_angina" class="form-control">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <strong>{{render_field(form.st_depression, class_="form-control")}}</strong>
+
+    </div>
+
+    <div class="form-group">
+        <label><strong>Slope of peak exercise ST segment</strong></label>
+        <select name="st_slope" class="form-control">
+            <option value="1">Unsloping</option>
+            <option value="2">Flat</option>
+            <option value="3">Down Sloping</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label><strong>Number of Colored Vessel by flouroscopy</strong></label>
+        <select name="number_of_vessels" class="form-control">
+            <option value="0">None</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label><strong>Thallium Scan Results</strong></label>
+        <select name="thallium_scan_results" class="form-control">
+            <option value="3">Normal</option>
+            <option value="6">Fixed Defect</option>
+            <option value="7">Non reversible Defect</option>
+        </select>
+    </div>
+
+    
+    <p><input type="submit" class="btn btn-primary" value="Predict"> </p>
+</form> -->
+
+
+
+
+
+    

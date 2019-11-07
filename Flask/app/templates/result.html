@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="jumbotron text-center">
+        <h1>Prediction Results</h1>
+    </div>
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Decision Tree</h4>
+                </div>
+                <div class="card-body">
+                    {% if result.alg1 == 0 %}
+                        <p>There is no probability of heart disease</p>
+                    {% else %}
+                        <p>There is high probability of heart disease</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Logistic Regression</h4>
+                </div>
+                <div class="card-body">
+                        {% if result.alg2 == 0 %}
+                            <p>There is no probability of heart disease</p>
+                        {% else %}
+                            <p>There is high probability of heart disease</p>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal"> Naive Bayes</h4>
+                </div>
+                <div class="card-body">
+                        {% if result.alg3 == 0 %}
+                            <p>There is no probability of heart disease</p>
+                        {% else %}
+                            <p>There is high probability of heart disease</p>
+                        {% endif %}
+                    
+                </div>
+            </div>
+
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Neural Network</h4>
+                </div>
+                <div class="card-body">
+                        {% if result.alg4 == 0 %}
+                            <p>There is no probability of heart disease</p>
+                        {% else %}
+                            <p>There is high probability of heart disease</p>
+                        {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="text-center">
+        <a href="/predict" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Return to Predict Form</a>
+    </div>
+    
+    
+{% endblock %}
